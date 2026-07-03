@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Boda de Daniel y Paola</title>
+
+    <!-- Meta tags para compartir en WhatsApp y Redes Sociales (Vista Previa) -->
+    <meta property="og:title" content="¡Nos Casamos! Daniel & Paola">
+    <meta property="og:description" content="¡Acompáñanos a celebrar nuestra historia! 27 de Septiembre, 2026.">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/d/17NL2vcm1kCTGJ8bI-BdrxvFmQkqy4FPU">
+    <meta property="og:url" content="https://tudominio.com/invitacion.html">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS para diseño fluido y moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fuentes de Google: Cinzel, Montserrat, Playfair Display, Pinyon Script, y Cormorant Garamond -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --crema: #fdfbf7;
+            --dorado: #d4af37;
+            --vino: #2E4C3B; /* Verde Bosque para paleta primaveral elegante */
+            --texto: #4a4a4a;
+            --verde-primavera: #7ba05b;
+            --verde-oscuro: #1e3327;
+        }
+
+        /* Configuración base para simular pantalla de celular */
+        body {
+            background-color: #121614;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 430px;
+            height: 100vh;
+            background-color: var(--crema);
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            overflow-y: auto;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Estilo de tipografía específica premium */
+        .font-cormorant {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .font-pinyon {
+            font-family: 'Pinyon Script', cursive;
+        }
+
+        /* --- ESTILO DEL SOBRE MEDIEVAL CLARO (TEXTURA PERGAMINO) --- */
+        #envelope {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5ecd8 0%, #e2ceaa 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
+            box-shadow: inset 0 0 80px rgba(92, 74, 55, 0.25);
+        }
+
+        /* Textura rugosa medieval */
+        #envelope::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
+            pointer-events: none;
+            opacity: 0.45;
+        }
+
+        /* Líneas de pliegue del sobre medieval */
+        .envelope-flap {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .flap-top {
+            top: 0;
+            border-width: 180px 215px 0 215px;
+            border-color: rgba(92, 74, 55, 0.08) transparent transparent transparent;
+        }
+
+        /* --- SELLO DE CERA ROJO REALISTA E IRREGULAR (3D) --- */
+        .wax-seal-wrapper {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 60;
+        }
+
+        .wax-seal {
+            width: 100px;
+            height: 98px;
+            background-image: radial-gradient(circle at 35% 35%, #a61c2e 0%, #520510 85%);
+            border-radius: 48% 52% 45% 55% / 50% 45% 55% 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f7e2af !important;
+            font-family: 'Cinzel', serif !important;
+            font-size: 1.8rem !important;
+            font-weight: 700 !important;
+            box-shadow: 
+                4px 6px 14px rgba(92, 40, 40, 0.45), 
+                inset 2px 3px 5px rgba(255,255,255,0.25), 
+                inset -3px -5px 8px rgba(0,0,0,0.65), 
+                inset 0 0 0 6px #8b1e2f, 
+                inset 0 0 12px 10px #38040d !important;
+            cursor: pointer !important;
+            position: relative !important;
+            z-index: 20 !important;
+            user-select: none !important;
+            text-shadow: -1px -1px 2px rgba(0,0,0,0.8), 1px 1px 2px rgba(255,255,255,0.2) !important;
+            animation: seal-pulse 2.5s infinite alternate ease-in-out !important;
+            border: none !important;
+        }
+
+        /* Bordes amorfos de cera derretida caliente (Capa 1) */
+        .wax-seal::before {
+            content: '' !important;
+            position: absolute !important;
+            width: 125px !important;
+            height: 120px !important;
+            background-image: radial-gradient(circle at 30% 30%, #a82537 0%, #6e0e1c 80%) !important;
+            border-radius: 55% 45% 60% 40% / 50% 55% 45% 50% !important;
+            z-index: -1 !important;
+            box-shadow: 3px 5px 10px rgba(0,0,0,0.35) !important;
+            top: -11px !important;
+            left: -12px !important;
+            animation: melt-wobble 4s ease-in-out infinite alternate !important;
+        }
+
+        /* Bordes amorfos de cera derretida caliente (Capa 2) */
+        .wax-seal::after {
+            content: '' !important;
+            position: absolute !important;
+            width: 115px !important;
+            height: 130px !important;
+            background-image: radial-gradient(circle at 70% 70%, #9e2132 0%, #520b17 80%) !important;
+            border-radius: 40% 60% 50% 50% / 45% 50% 50% 55% !important;
+            z-index: -2 !important;
+            top: -16px !important;
+            left: -2px !important;
+            animation: melt-wobble-2 5s ease-in-out infinite alternate !important;
+        }
+
+        @keyframes seal-pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.04); }
+        }
+        @keyframes melt-wobble {
+            0% { border-radius: 55% 45% 60% 40% / 50% 55% 45% 50%; }
+            100% { border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%; }
+        }
+        @keyframes melt-wobble-2 {
+            0% { border-radius: 40% 60% 50% 50% / 45% 50% 50% 55%; }
+            100% { border-radius: 50% 50% 60% 40% / 50% 45% 55% 50%; }
+        }
+
+        /* --- TEXTURA DE PAPEL CREMA LISO PREMIUM --- */
+        .paper-bg {
+            background-color: var(--crema);
+            /* Degradado muy suave y limpio que simula la fibra del papel artesanal */
+            background-image: linear-gradient(to bottom, #fdfbf7 0%, #faf6ec 100%);
+            position: relative;
+        }
+
+        /* Estilo de Transiciones Suaves al Scrollear */
+        .fade-item {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .fade-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Toast de notificación de copiado */
+        #toast {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--verde-oscuro);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            z-index: 100;
+            transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            border: 1px solid var(--dorado);
+        }
+        #toast.show {
+            top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sonido de apertura del sobre medieval (Sonido de papel/pergamino real) -->
+    <audio id="open-sound" src="https://assets.mixkit.co/active_storage/sfx/1484/1484-84.wav" preload="auto"></audio>
+
+    <!-- Música de fondo: Carga tu canción de fondo desde Google Drive con el enlace de streaming directo -->
+    <audio id="bg-music" src="https://docs.google.com/uc?export=download&id=1o77sX0xkD2hWH0v4KmVuPhmA_ozPuvuq" loop preload="auto"></audio>
+
+    <div class="phone-container">
+
+        <!-- NOTIFICACIÓN DE COPIADO (TOAST) -->
+        <div id="toast" class="font-montserrat">¡Copiado al portapapeles! 📋</div>
+
+        <!-- PANTALLA 1: SOBRE CON SELLO -->
+        <div id="envelope">
+            <div class="envelope-flap flap-top"></div>
+            
+            <div class="text-center mb-8 z-10 px-6">
+                <!-- Color oscuro para destacar en el sobre claro -->
+                <h3 class="font-cinzel text-xs tracking-[0.3em] text-[#5c4a37] mb-2 uppercase opacity-85">Invitación de Boda</h3>
+                <div class="w-12 h-[1px] bg-[#5c4a37] mx-auto opacity-55"></div>
+            </div>
+
+            <div class="wax-seal-wrapper">
+                <div class="wax-seal" id="seal">D & P</div>
+            </div>
+
+            <p class="font-cinzel text-xs text-[#5c4a37] tracking-[0.25em] uppercase mt-10 z-10 animate-pulse cursor-pointer font-bold" onclick="openEnvelope()">
+                Toca para abrir
+            </p>
+        </div>
+
+        <!-- BOTÓN DE MÚSICA FLOTANTE (Sutil control para pausar/reproducir) -->
+        <button id="music-toggle" class="fixed bottom-6 right-6 z-40 bg-[#2E4C3B] text-white p-3 rounded-full shadow-lg border border-[#d4af37] hidden transition-transform active:scale-95">
+            <svg id="music-icon-play" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <svg id="music-icon-pause" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </button>
+
+        <!-- PANTALLA 2: CONTENIDO DE LA INVITACIÓN -->
+        <div id="content" class="paper-bg min-h-screen px-6 py-16 flex flex-col items-center justify-start text-center relative">
+            
+            <!-- ESQUINAS BOTÁNICAS ORGÁNICAS Y DELICADAS (SVG sutil de 1px) -->
+            <div class="absolute top-6 left-6 w-16 h-16 opacity-[0.12] pointer-events-none text-[#7ba05b]">
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <path d="M 0,20 Q 20,20 20,0" stroke-linecap="round"/>
+                    <path d="M 0,40 Q 15,35 35,15 Q 35,0 35,0" stroke-linecap="round"/>
+                    <path d="M 15,25 C 10,22 8,15 12,12 C 15,10 22,12 25,15 Z" fill="currentColor" fill-opacity="0.3"/>
+                    <path d="M 25,15 C 22,10 15,8 12,12 C 10,15 12,22 15,25 Z" fill="currentColor" fill-opacity="0.3"/>
+                </svg>
+            </div>
+            <div class="absolute top-6 right-6 w-16 h-16 opacity-[0.12] pointer-events-none text-[#7ba05b] transform scale-x-[-1]">
+                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <path d="M 0,20 Q 20,20 20,0" stroke-linecap="round"/>
+                    <path d="M 0,40 Q 15,35 35,15 Q 35,0 35,0" stroke-linecap="round"/>
+                    <path d="M 15,25 C 10,22 8,15 12,12 C 15,10 22,12 25,15 Z" fill="currentColor" fill-opacity="0.3"/>
+                    <path d="M 25,15 C 22,10 15,8 12,12 C 10,15 12,22 15,25 Z" fill="currentColor" fill-opacity="0.3"/>
+                </svg>
+            </div>
+
+            <!-- DETALLE DE HOJAS SUTILES AL TOPE DEL BORDE SUPERIOR -->
+            <div class="fade-item mt-4 mb-2 opacity-35 flex justify-center w-full">
+                <svg class="w-24 h-6 text-[#7ba05b]" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10,15 Q60,15 110,15" stroke-linecap="round" />
+                    <!-- Hojas delgadas de izquierda a derecha -->
+                    <path d="M25,15 C23,10 18,8 15,12 C18,15 23,15 25,15 Z" fill="currentColor" fill-opacity="0.2" />
+                    <path d="M45,15 C43,10 38,8 35,12 C38,15 43,15 45,15 Z" fill="currentColor" fill-opacity="0.2" />
+                    <path d="M65,15 C63,10 58,8 55,12 Q58,15 65,15 Z" fill="currentColor" fill-opacity="0.2" />
+                    <path d="M85,15 C83,10 78,8 75,12 C78,15 83,15 85,15 Z" fill="currentColor" fill-opacity="0.2" />
+                    <!-- Hojas opuestas -->
+                    <path d="M35,15 C37,20 42,22 45,18 C42,15 37,15 35,15 Z" fill="currentColor" fill-opacity="0.2" />
+                    <path d="M55,15 C57,20 62,22 65,18 C62,15 57,15 55,15 Z" fill="currentColor" fill-opacity="0.2" />
+                    <path d="M75,15 C77,20 82,22 85,18 C82,15 77,15 75,15 Z" fill="currentColor" fill-opacity="0.2" />
+                </svg>
+            </div>
+
+            <!-- MENSAJE INICIAL DE AMOR (Al tope del papel crema) -->
+            <div class="fade-item px-4 mt-4 mb-6">
+                <p class="font-playfair italic text-gray-700 text-[1.05rem] leading-relaxed">
+                    "El amor es solo una palabra, hasta que llega la persona indicada para darle sentido. ¡Acompáñanos a celebrar nuestra historia!"
+                </p>
+                <div class="w-16 h-[1.5px] bg-[#d4af37] mt-5 mx-auto"></div>
+            </div>
+
+            <!-- NOMBRES DE LOS NOVIOS (ESTILO PREMIUM EDITORIAL) -->
+            <div class="fade-item my-8">
+                <p class="font-cinzel text-xs tracking-[0.3em] text-[#7ba05b] mb-1 uppercase">La boda de</p>
+                <h1 class="font-cormorant text-4xl md:text-5xl italic font-light tracking-wide text-[#2E4C3B] my-2">
+                    Daniel & Paola
+                </h1>
+                <div class="w-24 h-[1px] bg-[#d4af37]/40 mx-auto mt-4"></div>
+            </div>
+
+            <!-- CUENTA REGRESIVA -->
+            <div class="fade-item w-full bg-white bg-opacity-70 rounded-2xl p-5 shadow-sm border border-emerald-50 mb-10">
+                <p class="font-cinzel text-xs text-gray-500 tracking-[0.15em] uppercase mb-4">La Cuenta Regresiva</p>
+                <div class="grid grid-cols-4 gap-2">
+                    <div class="bg-emerald-50 bg-opacity-50 p-2 rounded-xl border border-emerald-100">
+                        <span id="days" class="block font-cinzel text-xl font-bold text-[#2E4C3B]">00</span>
+                        <span class="text-[0.65rem] uppercase text-gray-500 tracking-wider font-medium">Días</span>
+                    </div>
+                    <div class="bg-emerald-50 bg-opacity-50 p-2 rounded-xl border border-emerald-100">
+                        <span id="hours" class="block font-cinzel text-xl font-bold text-[#2E4C3B]">00</span>
+                        <span class="text-[0.65rem] uppercase text-gray-500 tracking-wider font-medium">Hs</span>
+                    </div>
+                    <div class="bg-emerald-50 bg-opacity-50 p-2 rounded-xl border border-emerald-100">
+                        <span id="minutes" class="block font-cinzel text-xl font-bold text-[#2E4C3B]">00</span>
+                        <span class="text-[0.65rem] uppercase text-gray-500 tracking-wider font-medium">Min</span>
+                    </div>
+                    <div class="bg-emerald-50 bg-opacity-50 p-2 rounded-xl border border-emerald-100">
+                        <span id="seconds" class="block font-cinzel text-xl font-bold text-[#2E4C3B]">00</span>
+                        <span class="text-[0.65rem] uppercase text-gray-500 tracking-wider font-medium">Seg</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GALERÍA DE FOTOS (ESTILO POLAROID CON IMÁGENES REALES DESDE DRIVE) -->
+            <div class="fade-item w-full flex flex-col items-center gap-8 mb-12">
+                
+                <!-- Polaroid 1: Foto Principal (Inclinada suavemente a la izquierda) -->
+                <div class="w-[88%] bg-white p-3 pb-8 shadow-xl border border-gray-100/50 rounded-sm transform -rotate-2 hover:rotate-0 hover:scale-[1.02] transition-all duration-300">
+                    <div class="overflow-hidden rounded-xs bg-gray-50">
+                        <img class="w-full h-56 object-cover" src="https://lh3.googleusercontent.com/d/1Swgsdv2kG8t-JeMxqz-M1ol7npuQ-nml" alt="Daniel y Paola Foto 1">
+                    </div>
+                    <p class="font-pinyon text-3xl text-amber-700/80 mt-4 select-none">Tú & Yo</p>
+                </div>
+                
+                <!-- Contenedor de las dos Polaroid juntas de menor tamaño -->
+                <div class="w-full flex justify-center gap-4 px-1">
+                    
+                    <!-- Polaroid 2: Izquierda (Inclinada hacia la izquierda) -->
+                    <div class="w-[47%] bg-white p-2.5 pb-6 shadow-lg border border-gray-100/50 rounded-sm transform -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <div class="overflow-hidden rounded-xs bg-gray-50">
+                            <img class="w-full h-36 object-cover" src="https://lh3.googleusercontent.com/d/105FP5PN_OQGVsNWnUcs-xu-6R3_3jAjV" alt="Daniel y Paola Foto 2">
+                        </div>
+                        <p class="font-pinyon text-2xl text-amber-700/80 mt-3 select-none">Siempre</p>
+                    </div>
+                    
+                    <!-- Polaroid 3: Derecha (Inclinada hacia la derecha) -->
+                    <div class="w-[47%] bg-white p-2.5 pb-6 shadow-lg border border-gray-100/50 rounded-sm transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <div class="overflow-hidden rounded-xs bg-gray-50">
+                            <img class="w-full h-36 object-cover" src="https://lh3.googleusercontent.com/d/1Yby7QZZzdELcFUvapSCfnRGUrLP2LkeP" alt="Daniel y Paola Foto 3">
+                        </div>
+                        <p class="font-pinyon text-2xl text-amber-700/80 mt-3 select-none">Juntos</p>
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+            <!-- CEREMONIA Y FIESTA CON DIRECCIÓN MAPS (COMIENZA A LAS 14:00) -->
+            <div class="fade-item w-full bg-white bg-opacity-70 rounded-2xl p-6 shadow-sm border border-emerald-50 mb-10">
+                <div class="w-10 h-10 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-[#7ba05b]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="font-cinzel text-lg text-[#2E4C3B] font-bold tracking-wide mb-2">Ceremonia y Fiesta</h3>
+                <p class="font-montserrat text-gray-800 font-semibold text-base">Janos Acceso Oeste</p>
+                <p class="font-montserrat text-gray-500 text-sm mt-1">27 de Septiembre, 2026 - 14:00 Hs.</p>
+                
+                <!-- Botón de Google Maps -->
+                <a href="https://maps.app.goo.gl/search/Janos+Acceso+Oeste" target="_blank" class="mt-5 inline-flex items-center justify-center gap-2 bg-[#2E4C3B] hover:bg-[#1e3327] text-white text-xs font-montserrat py-3 px-6 rounded-full transition-transform active:scale-95 shadow-md w-full uppercase tracking-wider font-semibold">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    Ver ubicación en Maps
+                </a>
+            </div>
+
+            <!-- CÓDIGO DE VESTIMENTA ELABORADO -->
+            <div class="fade-item w-full bg-white bg-opacity-70 rounded-2xl p-6 shadow-sm border border-emerald-50 mb-10">
+                <div class="w-10 h-10 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-[#7ba05b]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <h3 class="font-cinzel text-lg text-[#2E4C3B] font-bold tracking-wide mb-2">Código de Vestimenta</h3>
+                <p class="font-montserrat text-gray-700 tracking-widest uppercase text-sm font-bold text-amber-600">Elegante</p>
+                <p class="font-montserrat text-gray-500 text-xs leading-relaxed mt-3 px-2">
+                    Te invitamos a lucir tus mejores trajes, vestidos largos y calzado formal. ¡Vengamos listos para deslumbrar y celebrar en grande!
+                </p>
+            </div>
+
+            <!-- REGALOS / ALIAS -->
+            <div class="fade-item w-full bg-white bg-opacity-70 rounded-2xl p-6 shadow-sm border border-emerald-50 mb-10">
+                <div class="w-10 h-10 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-xl">💵</span>
+                </div>
+                <!-- Nombre de sección elegante -->
+                <h3 class="font-cinzel text-lg text-[#2E4C3B] font-bold tracking-wide mb-2">Un Gesto de Cariño</h3>
+                <!-- Mensaje formal refinado -->
+                <p class="font-montserrat text-gray-600 text-xs leading-relaxed mb-4 italic px-2">
+                    "Tu compañía en este día tan especial es nuestro mayor regalo. Si de igual manera deseás realizar un presente para acompañar nuestros proyectos y futuros pasos juntos, te dejamos nuestro alias bancario."
+                </p>
+                
+                <!-- Alias con botón de copiado rápido -->
+                <div class="bg-emerald-50/50 border border-dashed border-[#7ba05b] rounded-xl p-3 flex justify-between items-center max-w-xs mx-auto">
+                    <span id="alias-text" class="font-cinzel text-sm font-semibold text-[#2E4C3B] tracking-wider">boda.pao.dani.mp</span>
+                    <button onclick="copyAlias()" class="bg-[#7ba05b] text-white text-[10px] uppercase font-montserrat tracking-widest px-3 py-1.5 rounded-md hover:bg-[#2E4C3B] transition-colors font-bold">
+                        Copiar
+                    </button>
+                </div>
+            </div>
+
+            <!-- CONFIRMACIÓN DE ASISTENCIA (ENLACE A GOOGLE FORMS) -->
+            <div class="fade-item w-full mb-12">
+                <h3 class="font-cinzel text-xl text-[#2E4C3B] font-bold mb-3">¿Nos acompañas?</h3>
+                <p class="font-montserrat text-gray-600 text-xs mb-6 px-4">
+                    Por favor, esperamos tu confirmación hasta el <strong>10 de agosto de 2026</strong>.
+                </p>
+                
+                <!-- Tautan Google Forms de Daniel y Paola -->
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYourFormIDHere/viewform?usp=sf_link" target="_blank" class="inline-block w-full bg-[#2E4C3B] hover:bg-[#1e3327] text-white font-cinzel font-bold text-sm py-4 rounded-full shadow-lg shadow-[#2E4C3B]/20 transform transition active:scale-95 uppercase tracking-widest">
+                    Confirmar Asistencia
+                </a>
+            </div>
+
+            <!-- FIRMA FINAL (INICIALES D & P EN CURSIVA REAL MAYÚSCULAS) -->
+            <div class="fade-item mt-8 mb-6 relative">
+                <!-- SVG Esquinas inferiores de hojas sutiles -->
+                <div class="absolute bottom-6 left-6 w-12 h-12 opacity-[0.06] pointer-events-none text-[#7ba05b]">
+                    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
+                        <path d="M 0,80 Q 20,80 20,100" stroke-linecap="round"/>
+                        <path d="M 0,60 Q 15,65 35,85 Q 35,100 35,100" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="absolute bottom-6 right-6 w-12 h-12 opacity-[0.06] pointer-events-none text-[#7ba05b] transform scale-x-[-1]">
+                    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
+                        <path d="M 0,80 Q 20,80 20,100" stroke-linecap="round"/>
+                        <path d="M 0,60 Q 15,65 35,85 Q 35,100 35,100" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <div class="font-pinyon text-7xl text-[#d4af37] tracking-normal italic select-none">D & P</div>
+                <p class="font-cinzel text-[10px] text-gray-400 tracking-[0.3em] uppercase mt-4">27.09.2026</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- LÓGICA DE CONTROL DE LA INVITACIÓN -->
+    <script>
+        const envelope = document.getElementById('envelope');
+        const content = document.getElementById('content');
+        const bgMusic = document.getElementById('bg-music');
+        const openSound = document.getElementById('open-sound');
+        const musicToggle = document.getElementById('music-toggle');
+        const playIcon = document.getElementById('music-icon-play');
+        const pauseIcon = document.getElementById('music-icon-pause');
+
+        // Función para abrir el sobre e iniciar música y transición en orden
+        function openEnvelope() {
+            // 1. Reproducir inmediatamente el sonido realista de apertura de papel/pergamino
+            openSound.play().catch(e => {
+                console.log("Audio de apertura bloqueado temporalmente por política del navegador.", e);
+            });
+
+            // 2. Desbloquear la música de fondo de manera INMEDIATA en silencio absoluto (truco para Safari en iOS)
+            bgMusic.volume = 0;
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                // 3. Subir el volumen suavemente (fade-in) una vez que el sobre comience a desaparecer (a los 1.2 segundos)
+                setTimeout(() => {
+                    let vol = 0;
+                    const fadeInterval = setInterval(() => {
+                        if (vol < 1) {
+                            vol += 0.1;
+                            bgMusic.volume = Math.min(vol, 1);
+                        } else {
+                            clearInterval(fadeInterval);
+                        }
+                    }, 100);
+                }, 1200);
+            }).catch(e => {
+                console.log("Auto-play de música restringido por el navegador. Se iniciará al interactuar.");
+                isPlaying = false;
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            });
+
+            // 4. Desplazar sobre e iniciar transición visual (dura 1.2s en total)
+            envelope.style.transform = 'translateY(-100%)';
+            envelope.style.opacity = '0';
+            setTimeout(() => {
+                envelope.style.display = 'none';
+            }, 1200);
+
+            // 5. Activa y muestra el botón de control de música flotante
+            musicToggle.classList.remove('hidden');
+
+            // 6. Activar las animaciones de scroll para los bloques interiores
+            triggerFadeIn();
+        }
+
+        document.getElementById('seal').addEventListener('click', openEnvelope);
+
+        // --- MANEJO DE MÚSICA ---
+        let isPlaying = true;
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            } else {
+                bgMusic.volume = 1; // Asegurar volumen completo al reanudar manualmente
+                bgMusic.play();
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // --- COPIAR ALIAS SIN ALERT ---
+        function copyAlias() {
+            const aliasText = document.getElementById('alias-text').innerText;
+            const tempInput = document.createElement('input');
+            tempInput.value = aliasText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // --- ANIMACIÓN AL ENTRAR AL SCROLL ---
+        function triggerFadeIn() {
+            const items = document.querySelectorAll('.fade-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            items.forEach(item => {
+                observer.observe(item);
+            });
+        }
+
+        // --- CUENTA REGRESIVA CORREGIDA (APUNTA A LAS 14:00 HS DEL 27 DE SEPTIEMBRE 2026) ---
+        const targetDate = new Date('September 27, 2026 14:00:00').getTime();
+
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+        }, 1000);
+    </script>
+</body>
+</html>
